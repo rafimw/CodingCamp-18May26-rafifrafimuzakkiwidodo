@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard-grid">
+
+    <!-- Greeting & Live Clock Widget -->
+    <section id="greeting-widget" class="widget" aria-label="Greeting and Live Clock">
+      <div id="greeting-text" class="greeting-text"></div>
+      <div id="greeting-time" class="greeting-time"></div>
+      <div id="greeting-date" class="greeting-date"></div>
+    </section>
+
+    <!-- Focus Timer Widget -->
+    <section id="timer-widget" class="widget" aria-label="Focus Timer">
+      <h2 class="widget-title">Focus Timer</h2>
+      <div id="timer-display" class="timer-display">25:00</div>
+      <div id="timer-ended-indicator" class="timer-ended-indicator" hidden>Session complete!</div>
+      <div class="timer-controls">
+        <button id="timer-start-btn" type="button">Start</button>
+        <button id="timer-stop-btn" type="button">Stop</button>
+        <button id="timer-reset-btn" type="button">Reset</button>
+      </div>
+    </section>
+
+    <!-- To-Do List Widget -->
+    <section id="todo-widget" class="widget" aria-label="To-Do List">
+      <h2 class="widget-title">To-Do List</h2>
+      <form id="todo-add-form" class="todo-add-form" novalidate>
+        <label for="todo-input" class="sr-only">New task title</label>
+        <input
+          id="todo-input"
+          type="text"
+          class="todo-input"
+          placeholder="Add a new task…"
+          maxlength="250"
+          autocomplete="off"
+        />
+        <span id="todo-input-validation" class="validation-msg" role="alert" aria-live="polite"></span>
+        <button type="submit" class="todo-add-btn">Add</button>
+      </form>
+      <p id="todo-error" class="error-msg" role="alert" aria-live="polite"></p>
+      <ul id="todo-list" class="todo-list" aria-label="Task list"></ul>
+    </section>
+
+    <!-- Quick Links Widget -->
+    <section id="quicklinks-widget" class="widget" aria-label="Quick Links">
+      <h2 class="widget-title">Quick Links</h2>
+      <form id="quicklinks-add-form" class="quicklinks-add-form" novalidate>
+        <label for="quicklinks-label-input" class="sr-only">Link label</label>
+        <input
+          id="quicklinks-label-input"
+          type="text"
+          class="quicklinks-input"
+          placeholder="Label"
+          maxlength="100"
+          autocomplete="off"
+        />
+        <span id="quicklinks-label-validation" class="validation-msg" role="alert" aria-live="polite"></span>
+        <label for="quicklinks-url-input" class="sr-only">Link URL</label>
+        <input
+          id="quicklinks-url-input"
+          type="url"
+          class="quicklinks-input"
+          placeholder="https://example.com"
+          maxlength="2048"
+          autocomplete="off"
+        />
+        <span id="quicklinks-url-validation" class="validation-msg" role="alert" aria-live="polite"></span>
+        <button type="submit" class="quicklinks-add-btn">Add Link</button>
+      </form>
+      <p id="quicklinks-error" class="error-msg" role="alert" aria-live="polite"></p>
+      <div id="quicklinks-panel" class="quicklinks-panel" aria-label="Quick links panel"></div>
+    </section>
+
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
