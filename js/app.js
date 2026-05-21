@@ -675,13 +675,16 @@ const QuickLinksWidget = {
     item.dataset.id = link.id;
 
     // Clickable link button — opens in new tab (Req 7.4)
-    const btn = document.createElement('a');
+    // Using button + window.open() instead of <a target="_blank"> so it works
+    // reliably when the page is opened via file:// protocol.
+    const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'quicklink-btn';
-    btn.href = link.url;
-    btn.target = '_blank';
-    btn.rel = 'noopener noreferrer';
     btn.textContent = link.label;
     btn.title = link.url;
+    btn.addEventListener('click', () => {
+      window.open(link.url, '_blank', 'noopener,noreferrer');
+    });
 
     // Delete button (Req 8.1)
     const deleteBtn = document.createElement('button');
