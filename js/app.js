@@ -674,14 +674,32 @@ const QuickLinksWidget = {
     item.className = 'quicklink-item';
     item.dataset.id = link.id;
 
-    // Clickable link button — opens in new tab (Req 7.4)
-    // Using button + window.open() instead of <a target="_blank"> so it works
-    // reliably when the page is opened via file:// protocol.
+    // Tombol tautan — menggunakan window.open() agar berfungsi di protokol file://
+    // (tag <a target="_blank"> sering diblokir browser saat dibuka dari file lokal)
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'quicklink-btn';
-    btn.textContent = link.label;
-    btn.title = link.url;
+    btn.title = link.url; // tampilkan URL saat hover
+
+    // Ambil favicon website dari Google Favicon Service
+    // Format: https://www.google.com/s2/favicons?domain=DOMAIN&sz=32
+    const faviconImg = document.createElement('img');
+    try {
+      const domain = new URL(link.url).hostname; // ambil domain, misal "google.com"
+      faviconImg.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+    } catch (_) {
+      faviconImg.src = ''; // URL tidak valid, biarkan kosong
+    }
+    faviconImg.alt    = '';  // dekoratif, tidak perlu alt text
+    faviconImg.width  = 16;
+    faviconImg.height = 16;
+    faviconImg.className = 'quicklink-favicon';
+
+    // Teks label di samping favicon
+    const labelSpan = document.createElement('span');
+    labelSpan.textContent = link.label;
+
+    btn.append(faviconImg, labelSpan);
     btn.addEventListener('click', () => {
       window.open(link.url, '_blank', 'noopener,noreferrer');
     });

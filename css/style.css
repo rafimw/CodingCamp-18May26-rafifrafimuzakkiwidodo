@@ -434,6 +434,22 @@ body {
   background-color: #a7f3d0;
 }
 
+/* Favicon di dalam tombol tautan */
+.quicklink-favicon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;   /* jaga proporsi gambar */
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+/* Susun favicon dan label secara horizontal di dalam tombol */
+.quicklink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;         /* jarak antara favicon dan teks label */
+}
+
 .quicklink-delete-btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem; /* 12px — exactly at minimum */
