@@ -14,12 +14,24 @@ html {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
-  font-size: 1rem;       /* 16px — well above the 12px minimum */
+  font-size: 1rem;
   line-height: 1.5;
   color: #1a1a2e;
-  background-color: #f0f2f5;
+
+  /* Ganti background-color dengan gambar */
+  background-image: url('../images/bg.jpg'); /* sesuaikan nama file gambarmu */
+  background-size: cover;      /* gambar menutupi seluruh layar */
+  background-position: center; /* gambar dipusatkan */
+  background-repeat: no-repeat;/* gambar tidak diulang */
+  background-attachment: fixed;/* gambar diam saat halaman di-scroll */
+
   min-height: 100vh;
   padding: 1rem;
+
+  /* Pusatkan grid ke tengah layar secara horizontal dan vertikal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Ensure every text element stays at or above 12px */
@@ -43,7 +55,27 @@ body {
 }
 
 /* ============================================================
-   Dashboard Grid  (responsive: 320 px – 1920 px)
+   Frame Pembungkus Dashboard
+   ------------------------------------------------------------
+   Kontainer luar yang menghimpun keempat widget dalam satu bingkai
+   bertanda garis tepi. Ukurannya mengikuti lebar .dashboard-grid
+   dengan tambahan padding di sekelilingnya.
+   ============================================================ */
+.dashboard-frame {
+  border: 2px solid #ffffff2e;       /* garis tepi abu-abu biru */
+  border-radius: 1.25rem;          /* sudut membulat */
+  padding-top: 5rem;      /* jarak atas — ubah nilai ini sesuai kebutuhan */
+  padding-right: 1.25rem;
+  padding-bottom:5rem;
+  padding-left: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.177);  /* overlay gelap semi-transparan hanya di frame */
+  box-shadow: 0 4px 20px rgba(52, 43, 43, 0.1); /* bayangan lembut */
+  width: 100%;
+  max-width: 940px;                /* sedikit lebih lebar dari grid agar padding terlihat */
+}
+
+/* ============================================================
+   Grid Dashboard  (responsif: 320 px – 1920 px)
    ============================================================
    - 1 column  on narrow viewports (< 640 px)
    - 2 columns on medium viewports (640 px – 1023 px)
@@ -52,11 +84,11 @@ body {
 .dashboard-grid {
   display: grid;
   gap: 1rem;
-  width: 100%;
-  max-width: 1600px;
+  width: 75%;
+  max-width: 900px; /* batasi lebar agar widget tidak terlalu melebar */
   margin: 0 auto;
 
-  /* Single column by default (mobile-first) */
+  /* Satu kolom secara default (mobile-first) */
   grid-template-columns: 1fr;
 }
 

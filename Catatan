@@ -1,0 +1,7 @@
+body
+└── div.dashboard-frame   ← frame pembungkus (garis tepi baru)
+    └── div.dashboard-grid ← grid 2×2 seperti sebelumnya
+        ├── section#greeting-widget
+        ├── section#timer-widget
+        ├── section#todo-widget
+        └── section#quicklinks-widget
